@@ -32,12 +32,12 @@ namespace BankClient
 
                 if (serverReply.Item1 == ServerMessageEnum.Response)
                 {
-                    Console.WriteLine(serverReply.Item2);
+                    Console.Write(serverReply.Item2);
                     Send(Console.ReadLine());
                 }
                 else
                 {
-                    Console.WriteLine(serverReply.Item2);
+                    Console.Write(serverReply.Item2);
                 }
             }
         }
