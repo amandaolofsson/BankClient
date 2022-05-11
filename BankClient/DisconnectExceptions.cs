@@ -8,5 +8,6 @@ namespace BankClient
 {
     class DisconnectExceptions : Exception
     {
+
     }
 }
