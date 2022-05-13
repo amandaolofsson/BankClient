@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace BankClient
 {
-    enum ServerMessageEnum { Response, Text};
+    enum ServerMessageEnum {Response, Text};
+
     class Session
     {
         NetworkStream tcpStream;
+
         byte[] bRead = new byte[8192];
         protected int key = 4;
         Queue<string> responses = new Queue<string>();
@@ -25,10 +27,6 @@ namespace BankClient
             while (true)
             {
                 Tuple<ServerMessageEnum, string> serverReply = Receive();
-                if (serverReply.Item2 == "$$DISCONNECT")
-                {
-                    throw new DisconnectExceptions();
-                }
 
                 if (serverReply.Item1 == ServerMessageEnum.Response)
                 {
@@ -78,8 +76,16 @@ namespace BankClient
                 }
             }
 
+            //Checks Clear
+            //string clear = s.Substring(0, 1);
+
             //Checks Enum
             string command = s.Substring(0, 1);
+
+            //if(clear == "C")
+            {
+                //Console.Clear();
+            }
 
             ServerMessageEnum type;
             if (command == "R")

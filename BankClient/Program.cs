@@ -15,10 +15,13 @@ namespace BankClient
         {
             try
             {
+                //Same IP-adress and port as server
                 string adress = "127.0.0.1";
                 int port = 800;
+
                 Console.WriteLine("Connecting...");
                 TcpClient tcpClient = new TcpClient();
+
                 tcpClient.Connect(adress, port);
 
                 Console.WriteLine("Connected.");
@@ -26,10 +29,6 @@ namespace BankClient
 
                 Session s = new Session(tcpStream);
                 s.Run();
-            }
-            catch (DisconnectExceptions)
-            {
-                Console.WriteLine("Disconnected");
             }
             catch (SocketException)
             {
